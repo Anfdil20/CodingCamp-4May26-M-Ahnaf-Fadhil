@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Top bar: theme toggle -->
+  <div class="topbar">
+    <button id="theme-toggle" class="btn btn--icon" type="button" aria-label="Toggle light/dark mode">🌙</button>
+  </div>
+
+  <main class="dashboard">
+
+    <!-- Panel 1: Greeting — full width -->
+    <section id="greeting-panel" class="panel panel--greeting">
+      <p id="greeting-time" class="greeting__time"></p>
+      <p id="greeting-date" class="greeting__date"></p>
+      <p id="greeting-text" class="greeting__text">
+        <!-- name is rendered by JS -->
+      </p>
+      <!-- Inline name editor (hidden by default) -->
+      <div id="name-editor" class="name-editor" hidden>
+        <input id="name-input" type="text" class="input name-editor__input" placeholder="Enter your name…" maxlength="40" autocomplete="off" />
+        <button id="name-save" type="button" class="btn btn--primary">Save</button>
+        <button id="name-cancel" type="button" class="btn btn--ghost">Cancel</button>
+      </div>
+    </section>
+
+    <!-- Panel 2: Focus Timer -->
+    <section id="timer-panel" class="panel panel--timer">
+      <h2 class="panel__title">Focus Timer</h2>
+      <p id="timer-display" class="timer__display">25:00</p>
+      <div class="timer__controls">
+        <button id="timer-start" type="button" class="btn btn--primary">Start</button>
+        <button id="timer-stop"  type="button" class="btn btn--secondary" disabled>Stop</button>
+        <button id="timer-reset" type="button" class="btn btn--ghost">Reset</button>
+      </div>
+      <!-- Custom duration -->
+      <div class="timer__custom">
+        <label for="timer-duration-input" class="timer__custom-label">Set duration (min):</label>
+        <div class="timer__custom-row">
+          <input id="timer-duration-input" type="number" class="input timer__duration-input" min="1" max="120" value="25" />
+          <button id="timer-set-duration" type="button" class="btn btn--secondary">Set</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 3: Task Manager -->
+    <section id="task-panel" class="panel panel--tasks">
+      <h2 class="panel__title">Tasks</h2>
+      <form id="task-form" class="task__form">
+        <input id="task-input" type="text" class="input" placeholder="Add a new task..." autocomplete="off" />
+        <button type="submit" class="btn btn--primary">Add</button>
+      </form>
+      <ul id="task-list" class="task__list"></ul>
+    </section>
+
+    <!-- Panel 4: Quick Links -->
+    <section id="links-panel" class="panel panel--links">
+      <h2 class="panel__title">Quick Links</h2>
+      <form id="links-form" class="links__form">
+        <input id="link-label-input" type="text" class="input" placeholder="Link name" autocomplete="off" />
+        <input id="link-url-input"   type="url"  class="input" placeholder="URL"       autocomplete="off" />
+        <button type="submit" class="btn btn--primary">Add Link</button>
+      </form>
+      <div id="links-list" class="links__list"></div>
+    </section>
+
+  </main>
+
+  <!-- localStorage unavailability warning (hidden by default) -->
+  <div id="storage-warning" class="storage-warning" hidden>
+    ⚠️ Local Storage is unavailable. Data will not be saved.
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
